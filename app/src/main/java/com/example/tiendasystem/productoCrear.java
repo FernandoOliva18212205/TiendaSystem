@@ -159,23 +159,8 @@ public class productoCrear extends AppCompatActivity implements View.OnClickList
         if(result!= null) {
             if (result.getContents() != null) {
 
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage(result.getContents());
-                builder.setTitle("Resultado de escaneo");
-                builder.setPositiveButton("Escanear de nuevo", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        scanCode();
-                    }
-                }).setNegativeButton("finalizar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        finish();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                editText1.setText(result.getContents());
+                btn1.callOnClick();
 
 
             } else {
