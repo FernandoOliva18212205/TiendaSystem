@@ -39,7 +39,7 @@ public class dbProducto extends DbHelper{
         return id;
     }
 
-    public ArrayList<productos> mostrarProductos(){
+    public ArrayList<productos> mostrarProducto(Integer codigo){
 
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -49,16 +49,14 @@ public class dbProducto extends DbHelper{
         productos produtos = null;
         Cursor cursorProducto = null;
 
-        cursorProducto = db.rawQuery("SELECT * FROM " + TABLE_PRODUCTOS, null);
+        cursorProducto = db.rawQuery("SELECT nombre, precio FROM " + TABLE_PRODUCTOS + " WHERE id_producto = '"+codigo+"' LIMIT 1", null);
 
         if(cursorProducto.moveToFirst())
         {
             do{
                 produtos = new productos();
-                produtos.setId(cursorProducto.getInt(0));
-                produtos.setNombre(cursorProducto.getString(1));
-                produtos.setPrecio(cursorProducto.getDouble(2));
-                produtos.setTipo(cursorProducto.getInt(3));
+                produtos.setNombre(cursorProducto.getString(0));
+                produtos.setPrecio(cursorProducto.getDouble(1));
                 listaProductos.add(produtos);
             }while (cursorProducto.moveToNext());
         }
