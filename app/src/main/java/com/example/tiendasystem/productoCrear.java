@@ -1,7 +1,11 @@
 package com.example.tiendasystem;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -17,12 +21,14 @@ import com.example.tiendasystem.db.DbHelper;
 import com.example.tiendasystem.db.dbProducto;
 import com.example.tiendasystem.db.dbTipos;
 import com.example.tiendasystem.db.entidades.Tipos;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class productoCrear extends AppCompatActivity {
+public class productoCrear extends AppCompatActivity implements View.OnClickListener {
     Button btn1, btn2;
     EditText editText1, editText2,editText3;
     String nombre;
@@ -37,6 +43,7 @@ public class productoCrear extends AppCompatActivity {
         setContentView(R.layout.activity_producto_crear);
 
         btn1 = findViewById(R.id.button1);
+        btn2 = findViewById(R.id.btnEscaner);
         spTipo = findViewById(R.id.spinner);
         editText1 = findViewById(R.id.txtCodigo);
         editText2 = findViewById(R.id.txtNombre);
@@ -107,6 +114,7 @@ public class productoCrear extends AppCompatActivity {
             }
         });
 
+        btn2.setOnClickListener(this);
 
     }
     private List<Tipos> llenarTipos(){
@@ -128,5 +136,55 @@ public class productoCrear extends AppCompatActivity {
         dbTipos.close();
 
         return listaTipo;
+    }
+
+    @Override
+    public void onClick(View view) {
+        scanCode();
+    }
+
+    private void scanCode(){
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setCaptureActivity(CaptureAct.class);
+        integrator.setOrientationLocked(false);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+        integrator.setPrompt("Escaneando");
+        integrator.initiateScan();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
+        if(result!= null) {
+            if (result.getContents() != null) {
+
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(result.getContents());
+                builder.setTitle("Resultado de escaneo");
+                builder.setPositiveButton("Escanear de nuevo", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        scanCode();
+                    }
+                }).setNegativeButton("finalizar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+
+            } else {
+                Toast.makeText(this, "Sin resultado", Toast.LENGTH_LONG).show();
+            }
+
+        }else{
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+
     }
 }
