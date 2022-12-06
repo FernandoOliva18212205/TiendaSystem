@@ -2,6 +2,7 @@ package com.example.tiendasystem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -25,7 +26,7 @@ public class CajaActivity extends AppCompatActivity {
     private Integer codigo;
     private String nombre;
     private Double precio, acum=0.0;
-
+    ArrayList<String> producto = new ArrayList<String>();
     ArrayList<productos> listaArrayProducto;
     productos produtoss;
     @Override
@@ -45,7 +46,7 @@ public class CajaActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
-                    ArrayList<String> producto = new ArrayList<String>();
+
                     codigo = Integer.valueOf(txtCodigo.getText().toString()) ;
                     dbProducto dbProductos = new dbProducto(CajaActivity.this);
                     produtoss = dbProductos.verProductos(codigo);
@@ -55,8 +56,7 @@ public class CajaActivity extends AppCompatActivity {
                         precio = produtoss.getPrecio();
                     }
 
-                    producto.add(nombre + "\nPrecio unitario: $" + precio +
-                            " \nSubtotal: $" + (precio));
+                    producto.add(nombre + "\nPrecio unitario: $" + precio );
                     //Variable acumuladora que va calculando el total el pedido
                     acum = acum + precio;
 
@@ -70,6 +70,14 @@ public class CajaActivity extends AppCompatActivity {
                 }
             }
         });
-
+        btnCobrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lvProductosCobrar.setAdapter(null);
+                lblTotal.setText("$");
+                txtCodigo.setText("");
+                Toast.makeText(CajaActivity.this, "GRACIAS POR SU COMPRA", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
