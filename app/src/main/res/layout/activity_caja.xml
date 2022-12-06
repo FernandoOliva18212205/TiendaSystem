@@ -12,7 +12,7 @@
         android:id="@+id/txtCodigoCobrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Codigo del producto" />
@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:backgroundTint="#99B83C"
         android:text="Escanear"/>
 
     <ListView

@@ -5,88 +5,143 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MenuActivity">
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="120dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="55dp"
-        android:backgroundTint="#99B83C"
-        android:text="Agregar"
-        android:textAlignment="center"
-        android:textSize="14dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></Button>
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="120dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="55dp"
-        android:backgroundTint="#99B83C"
-        android:text="Eliminar"
-        android:textAlignment="center"
-        android:textSize="14dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button1"></Button>
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="120dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="55dp"
-        android:backgroundTint="#99B83C"
-        android:text="Modificar"
-        android:textAlignment="center"
-        android:textSize="14dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button2"></Button>
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="120dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="55dp"
-        android:backgroundTint="#99B83C"
-        android:text="Productos"
-        android:textAlignment="center"
-        android:textSize="14dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button3"></Button>
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="120dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="55dp"
-        android:backgroundTint="#99B83C"
-        android:text="Agregar tipo"
-        android:textAlignment="center"
-        android:textSize="14dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button4"></Button>
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="120dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="55dp"
-        android:backgroundTint="#99B83C"
-        android:text="Caja"
-        android:textAlignment="center"
-        android:textSize="14dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button4"></Button>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:text="Hola, usuario"
+                android:textColor="#64c27b"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="¿Qué necesitas?"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.167"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="55dp"
+            android:backgroundTint="#99B83C"
+            android:text="Agregar"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:textStyle="bold"></Button>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="55dp"
+            android:backgroundTint="#99B83C"
+            android:text="Eliminar"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:textStyle="bold"></Button>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="55dp"
+            android:backgroundTint="#99B83C"
+            android:text="Modificar"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:textStyle="bold"></Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.804"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="55dp"
+            android:backgroundTint="#99B83C"
+            android:text="Productos"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:textStyle="bold"></Button>
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="55dp"
+            android:backgroundTint="#99B83C"
+            android:text="Agregar tipo"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:textStyle="bold"></Button>
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="55dp"
+            android:backgroundTint="#99B83C"
+            android:text="Caja"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:textStyle="bold"></Button>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
