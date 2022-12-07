@@ -7,6 +7,7 @@
     tools:context=".MenuActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="220dp"
         android:layout_height="107dp"
         android:orientation="vertical"
@@ -56,14 +57,15 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.167"
+        app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.634">
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="130dp"
-            android:layout_height="60dp"
+            android:layout_width="140dp"
+            android:layout_height="80dp"
             android:layout_marginTop="55dp"
             android:backgroundTint="#99B83C"
             android:text="Agregar"
@@ -74,8 +76,8 @@
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="130dp"
-            android:layout_height="60dp"
+            android:layout_width="140dp"
+            android:layout_height="80dp"
             android:layout_marginTop="55dp"
             android:backgroundTint="#99B83C"
             android:text="Eliminar"
@@ -86,8 +88,8 @@
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="130dp"
-            android:layout_height="60dp"
+            android:layout_width="140dp"
+            android:layout_height="80dp"
             android:layout_marginTop="55dp"
             android:backgroundTint="#99B83C"
             android:text="Modificar"
@@ -105,14 +107,15 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.804"
+        app:layout_constraintHorizontal_bias="0.833"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.634">
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="130dp"
-            android:layout_height="60dp"
+            android:layout_width="140dp"
+            android:layout_height="80dp"
             android:layout_marginTop="55dp"
             android:backgroundTint="#99B83C"
             android:text="Productos"
@@ -123,8 +126,8 @@
 
         <Button
             android:id="@+id/button5"
-            android:layout_width="130dp"
-            android:layout_height="60dp"
+            android:layout_width="140dp"
+            android:layout_height="80dp"
             android:layout_marginTop="55dp"
             android:backgroundTint="#99B83C"
             android:text="Agregar tipo"
@@ -135,8 +138,8 @@
 
         <Button
             android:id="@+id/button6"
-            android:layout_width="130dp"
-            android:layout_height="60dp"
+            android:layout_width="140dp"
+            android:layout_height="80dp"
             android:layout_marginTop="55dp"
             android:backgroundTint="#99B83C"
             android:text="Caja"
@@ -152,8 +155,8 @@
         android:layout_height="157dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout3"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.043"
         app:srcCompat="@drawable/_18197833_685992599587975_3274986589485378881_n" />
