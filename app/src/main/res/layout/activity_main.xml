@@ -10,15 +10,17 @@
         android:id="@+id/textview1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
         android:letterSpacing="-0.05"
         android:text="Iniciar Sesión"
         android:textColor="@color/black"
         android:textSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.354"></TextView>
 
     <EditText
         android:id="@+id/editText1"
@@ -77,14 +79,16 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="160dp"
         android:backgroundTint="#ffffff"
         android:text="No tengo una cuenta"
         android:textAlignment="center"
         android:textColor="@color/black"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/button1"></Button>
+
     <TextView
         android:id="@+id/textview2"
         android:layout_width="wrap_content"
@@ -95,5 +99,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/button1"></TextView>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="414dp"
+        android:layout_height="203dp"
+        app:srcCompat="@drawable/_18197833_685992599587975_3274986589485378881_n" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

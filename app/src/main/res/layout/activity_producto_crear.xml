@@ -10,14 +10,15 @@
         android:id="@+id/textview1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="172dp"
         android:letterSpacing="-0.05"
         android:text="Crear un producto"
         android:textColor="@color/black"
         android:textSize="32dp"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" ></TextView>
+        app:layout_constraintTop_toTopOf="parent"></TextView>
 
     <EditText
         android:id="@+id/txtCodigo"
@@ -36,23 +37,26 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textview1"></EditText>
+
     <Button
         android:id="@+id/btnEscaner"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="80dp"
         android:backgroundTint="#ffffff"
         android:text="Escanear"
         android:textAlignment="center"
         android:textColor="@color/black"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txtCodigo"></Button>
+
     <EditText
         android:id="@+id/txtNombre"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="92dp"
         android:background="@drawable/input"
         android:hint="Nombre"
         android:maxLength="10"
@@ -62,6 +66,7 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="18dp"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnEscaner"></EditText>
@@ -70,17 +75,18 @@
         android:id="@+id/txtPrecio"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="52dp"
         android:background="@drawable/input_password"
         android:hint="Precio"
+        android:inputType="numberDecimal"
         android:maxLength="10"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:inputType="numberDecimal"
         android:singleLine="true"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="18dp"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txtNombre"></EditText>
@@ -89,12 +95,13 @@
         android:id="@+id/spinner"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="84dp"
         android:backgroundTint="#99B1"
         android:textAlignment="center"
-        android:textSize="14dp"
         android:textColor="@color/black"
+        android:textSize="14dp"
         android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txtPrecio"></Spinner>
@@ -103,7 +110,7 @@
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="92dp"
         android:backgroundTint="#ffffff"
         android:text="guardar"
         android:textAlignment="center"
@@ -111,4 +118,17 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/spinner"></Button>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="304dp"
+        android:layout_height="134dp"
+        app:layout_constraintBottom_toTopOf="@+id/textview1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.789"
+        app:srcCompat="@drawable/_18197833_685992599587975_3274986589485378881_n" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
