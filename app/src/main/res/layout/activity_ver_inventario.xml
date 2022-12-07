@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Inventario"
+        android:text="Catálogo"
         android:textColor="#D5B861"
         android:textSize="28sp"
         android:textStyle="bold"
