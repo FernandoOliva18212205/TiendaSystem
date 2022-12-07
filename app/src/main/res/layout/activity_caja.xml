@@ -15,8 +15,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Codigo del producto"
-        android:inputType="textPersonName"
-        android:maxLength="7" />
+        android:inputType="textPersonName"/>
 
     <Button
         android:id="@+id/btnEscanear"

@@ -19,7 +19,7 @@ public class dbProducto extends DbHelper{
         this.context = context;
     }
 
-    public long insertarProductos(Integer codigo,String nombre, Double precio, Integer tipo){
+    public long insertarProductos(String codigo,String nombre, Double precio, Integer tipo){
         long id =0;
         try{
             DbHelper dbHelper = new DbHelper(context);
@@ -39,7 +39,7 @@ public class dbProducto extends DbHelper{
         return id;
     }
 
-    public ArrayList<productos> mostrarProducto(Integer codigo){
+    public ArrayList<productos> mostrarProducto(String codigo){
 
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -66,7 +66,7 @@ public class dbProducto extends DbHelper{
         return listaProductos;
     }
 
-    public productos verProductos(Integer codigo){
+    public productos verProductos(String codigo){
 
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -91,7 +91,7 @@ public class dbProducto extends DbHelper{
         return produtoss;
     }
 
-    public boolean editarProducto(Integer codigo,String nombre, Double precio, int tipo)
+    public boolean editarProducto(String codigo,String nombre, Double precio, int tipo)
     {
 
         boolean correcto = false;

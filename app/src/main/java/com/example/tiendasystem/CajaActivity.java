@@ -27,8 +27,7 @@ public class CajaActivity extends AppCompatActivity  implements View.OnClickList
     private TextView lblTotal;
     private ListView lvProductosCobrar;
     private Button btnEscanear,btnCobrar;
-    private Integer codigo;
-    private String nombre;
+    private String nombre,codigo;
     private Double precio, acum=0.0;
     ArrayList<String> producto = new ArrayList<String>();
     ArrayList<productos> listaArrayProducto;
@@ -53,6 +52,8 @@ public class CajaActivity extends AppCompatActivity  implements View.OnClickList
                 lvProductosCobrar.setAdapter(null);
                 lblTotal.setText("$");
                 txtCodigo.setText("");
+                producto.clear();
+                acum=0.0;
                 Toast.makeText(CajaActivity.this, "GRACIAS POR SU COMPRA", Toast.LENGTH_LONG).show();
             }
         });
@@ -84,7 +85,7 @@ public class CajaActivity extends AppCompatActivity  implements View.OnClickList
                 txtCodigo.setText(Contenido);
                 try{
 
-                    codigo = Integer.valueOf(txtCodigo.getText().toString()) ;
+                    codigo = txtCodigo.getText().toString() ;
                     dbProducto dbProductos = new dbProducto(CajaActivity.this);
                     produtoss = dbProductos.verProductos(codigo);
 

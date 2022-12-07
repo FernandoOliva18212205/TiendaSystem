@@ -26,7 +26,6 @@
         android:layout_marginTop="60dp"
         android:background="@drawable/input"
         android:hint="Codigo"
-        android:maxLength="7"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:singleLine="true"

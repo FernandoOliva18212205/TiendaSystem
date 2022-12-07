@@ -28,8 +28,8 @@ public class productoModificar extends AppCompatActivity  implements View.OnClic
     EditText txtNombre,txtPrecio,txtBusqueda;
     Button btnBuscar,btnGuardar;
     Spinner spTipo;
-    Integer tipo,codigo;
-
+    Integer tipo;
+    String codigo;
     productos produtoss;
 
     String nombre = "";
@@ -65,7 +65,7 @@ public class productoModificar extends AppCompatActivity  implements View.OnClic
             @Override
             public void onClick(View view) {
                 try{
-                    codigo = Integer.valueOf(txtBusqueda.getText().toString()) ;
+                    codigo = txtBusqueda.getText().toString() ;
                     Double precio = Double.valueOf(txtPrecio.getText().toString());
                     nombre = txtNombre.getText().toString();
                     dbProducto dbProductos = new dbProducto(productoModificar.this);
@@ -124,7 +124,7 @@ public class productoModificar extends AppCompatActivity  implements View.OnClic
                 String Contenido = result.getContents();
                 txtBusqueda.setText(Contenido);
                 try{
-                    codigo = Integer.valueOf(txtBusqueda.getText().toString()) ;
+                    codigo = txtBusqueda.getText().toString() ;
                     dbProducto dbProductos = new dbProducto(productoModificar.this);
                     produtoss = dbProductos.verProductos(codigo);
 

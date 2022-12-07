@@ -31,9 +31,9 @@ import java.util.List;
 public class productoCrear extends AppCompatActivity implements View.OnClickListener {
     Button btn1, btn2;
     EditText editText1, editText2,editText3;
-    String nombre;
+    String nombre,codigo;
     Double precio;
-    Integer tipo, codigo;
+    Integer tipo;
     Spinner spTipo;
     private Cursor fila;
 
@@ -76,7 +76,7 @@ public class productoCrear extends AppCompatActivity implements View.OnClickList
             public void onClick(View view) {
                 DbHelper admin=new DbHelper(productoCrear.this);
                 SQLiteDatabase db=admin.getWritableDatabase();
-                codigo = Integer.valueOf(editText1.getText().toString());
+                codigo =editText1.getText().toString();
                 nombre = editText2.getText().toString();
                 precio = Double.valueOf(editText3.getText().toString());
                 fila=db.rawQuery("select * from t_productos where id_producto='"+
