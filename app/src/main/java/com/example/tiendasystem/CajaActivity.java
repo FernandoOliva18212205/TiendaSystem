@@ -1,7 +1,9 @@
 package com.example.tiendasystem;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -15,10 +17,12 @@ import android.widget.Toast;
 import com.example.tiendasystem.db.adaptadores.listaProductos;
 import com.example.tiendasystem.db.dbProducto;
 import com.example.tiendasystem.db.entidades.productos;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import java.util.ArrayList;
 
-public class CajaActivity extends AppCompatActivity {
+public class CajaActivity extends AppCompatActivity  implements View.OnClickListener{
     private EditText txtCodigo;
     private TextView lblTotal;
     private ListView lvProductosCobrar;
@@ -42,9 +46,42 @@ public class CajaActivity extends AppCompatActivity {
 
 
 
-        btnEscanear.setOnClickListener(new View.OnClickListener() {
+        btnEscanear.setOnClickListener(this);
+        btnCobrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                lvProductosCobrar.setAdapter(null);
+                lblTotal.setText("$");
+                txtCodigo.setText("");
+                Toast.makeText(CajaActivity.this, "GRACIAS POR SU COMPRA", Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        scanCode();
+    }
+
+    private void scanCode(){
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setCaptureActivity(CaptureAct.class);
+        integrator.setOrientationLocked(false);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+        integrator.setPrompt("Escaneando");
+        integrator.initiateScan();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
+        if(result!= null) {
+            if (result.getContents() != null) {
+
+                String Contenido = result.getContents();
+                txtCodigo.setText(Contenido);
                 try{
 
                     codigo = Integer.valueOf(txtCodigo.getText().toString()) ;
@@ -68,16 +105,15 @@ public class CajaActivity extends AppCompatActivity {
                 {
                     Toast.makeText(CajaActivity.this, "Error", Toast.LENGTH_SHORT).show();
                 }
+
+
+            } else {
+                Toast.makeText(this, "Sin resultado", Toast.LENGTH_LONG).show();
             }
-        });
-        btnCobrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lvProductosCobrar.setAdapter(null);
-                lblTotal.setText("$");
-                txtCodigo.setText("");
-                Toast.makeText(CajaActivity.this, "GRACIAS POR SU COMPRA", Toast.LENGTH_LONG).show();
-            }
-        });
+
+        }else{
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+
     }
 }

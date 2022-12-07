@@ -159,8 +159,8 @@ public class productoCrear extends AppCompatActivity implements View.OnClickList
         if(result!= null) {
             if (result.getContents() != null) {
 
-                editText1.setText(result.getContents());
-                btn1.callOnClick();
+                String Contenido = result.getContents();
+                editText1.setText(Contenido);
 
 
             } else {

@@ -1,7 +1,9 @@
 package com.example.tiendasystem;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -16,11 +18,13 @@ import com.example.tiendasystem.db.dbProducto;
 import com.example.tiendasystem.db.dbTipos;
 import com.example.tiendasystem.db.entidades.Tipos;
 import com.example.tiendasystem.db.entidades.productos;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class productoModificar extends AppCompatActivity {
+public class productoModificar extends AppCompatActivity  implements View.OnClickListener{
     EditText txtNombre,txtPrecio,txtBusqueda;
     Button btnBuscar,btnGuardar;
     Spinner spTipo;
@@ -56,28 +60,7 @@ public class productoModificar extends AppCompatActivity {
 
             }
         });
-        btnBuscar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try{
-                    codigo = Integer.valueOf(txtBusqueda.getText().toString()) ;
-                    dbProducto dbProductos = new dbProducto(productoModificar.this);
-                    produtoss = dbProductos.verProductos(codigo);
-
-                    if(produtoss != null){
-                        txtNombre.setText(produtoss.getNombre());
-                        txtPrecio.setText(String.valueOf(produtoss.getPrecio()));
-                        int posicion = produtoss.getTipo() - 2;
-                        spTipo.setSelection(posicion);
-
-                    }
-                }catch (Exception e)
-                {
-                    Toast.makeText(productoModificar.this, "Error", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
+        btnBuscar.setOnClickListener(this);
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,5 +98,55 @@ public class productoModificar extends AppCompatActivity {
         dbTipos.close();
 
         return listaTipo;
+    }
+
+    @Override
+    public void onClick(View view) {
+        scanCode();
+    }
+
+    private void scanCode() {
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setCaptureActivity(CaptureAct.class);
+        integrator.setOrientationLocked(false);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+        integrator.setPrompt("Escaneando");
+        integrator.initiateScan();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null) {
+            if (result.getContents() != null) {
+
+                String Contenido = result.getContents();
+                txtBusqueda.setText(Contenido);
+                try{
+                    codigo = Integer.valueOf(txtBusqueda.getText().toString()) ;
+                    dbProducto dbProductos = new dbProducto(productoModificar.this);
+                    produtoss = dbProductos.verProductos(codigo);
+
+                    if(produtoss != null){
+                        txtNombre.setText(produtoss.getNombre());
+                        txtPrecio.setText(String.valueOf(produtoss.getPrecio()));
+                        int posicion = produtoss.getTipo() - 2;
+                        spTipo.setSelection(posicion);
+
+                    }
+                }catch (Exception e)
+                {
+                    Toast.makeText(productoModificar.this, "Error", Toast.LENGTH_SHORT).show();
+                }
+
+
+            } else {
+                Toast.makeText(this, "Sin resultado", Toast.LENGTH_LONG).show();
+            }
+
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }
